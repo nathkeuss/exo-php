@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #10083a;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    color: white;
+    display: flex;
+}
+header  {
+    background-color: #0b0529;
+    width: 10%;
+    height: 100vh;
+    border-right: solid 5px black;
+}
+ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+li {
+    list-style-type: none;
+    margin-bottom: 20px;
+}
+a {
+    text-decoration: none;
+    color: yellow;
+    font-size: 20px;
+}
+
+footer {
+    text-align: center;
+    font-size: 50px;
+    color: red;
+}
