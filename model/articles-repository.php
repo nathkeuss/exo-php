@@ -11,6 +11,21 @@ function findArticles()
     return $articles;
 }
 
+function findArticlesByCategory($category) {
+    $articlesJsonFilePath = '../../model/articles.json';
+
+    $articeJson = file_get_contents($articlesJsonFilePath);
+
+    $articles = json_decode($articeJson, true);
+
+    return array_filter($articles, function($article) use ($category) {
+        return $article['category'] === $category;
+    });
+}
+
+
+
+
 function insertArticle($articleCreated) {
     $currentArticles = findArticles();
 

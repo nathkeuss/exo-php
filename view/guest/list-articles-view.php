@@ -4,6 +4,20 @@
 
     <h1>Les articles du blog</h1>
 
+    <p>Filtrer les articles : </p>
+
+    <form method="get">
+        <label for="category">Catégorie</label>
+        <select name="category" id="category">
+            <option value="">- Choisis -</option>
+            <option value="fort">fort</option>
+            <option value="mid">mid</option>
+            <option value="nul">nul</option>
+        </select>
+
+        <input type="submit">
+    </form>
+
     <?php foreach ($articles as $article) { ?>
 
         <article>
