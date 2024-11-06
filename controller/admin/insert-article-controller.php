@@ -1,9 +1,7 @@
-
-
 <?php
-
+require_once ('../../config/config.php');
 require_once('../../service/authentification-service.php');
-require_once('../../service/articles-service.php');
+require_once('../../model/articles-repository.php');
 redirectNotLoggedUser();
 
 
@@ -16,8 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ($_POST['title'] &&
         $_POST['content'] &&
         $_POST['image'] &&
+        $_POST['category'] &&
         mb_strlen($_POST['title']) > 4 &&
         mb_strlen($_POST['content']) > 4 &&
+        mb_strlen($_POST['category']) &&
         mb_strlen($_POST['image']) > 4) {
 
 
@@ -25,7 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // issues du formulaire
         $article = ["title" => $_POST["title"],
             "content" => $_POST["content"],
-            "image" => $_POST["image"]];
+            "image" => $_POST["image"],
+            "category" => $_POST["category"]];
 
         // je créé un tableau contenant toutes mes valeurs
         // issues du formulaire
@@ -33,23 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             "title" => $_POST['title'],
             "content" => $_POST['content'],
             "image" => $_POST['image'],
+            "category" => $_POST['category']
         ];
 
-        $currentArticles = findArticles();
-
-        // j'ajoute dans le tableau des articles sauvés, le nouvel article
-        $currentArticles[] = $articleCreated;
-
-        // je convertis mon article en json
-        $updatedArticlesJson = json_encode($currentArticles,JSON_PRETTY_PRINT);
-
-
-        $articlesJsonpath = '../../model/articles.json';
-        // j'ouvre le fichier json, je stocke mon article
-        // dedans et je ferme le fichier json
-        $fp = fopen($articlesJsonpath, 'w');
-        fwrite($fp, $updatedArticlesJson);
-        fclose($fp);
+        insertArticle($articleCreated);
 
         $isArticleCreated = true;
     }

@@ -6,6 +6,14 @@
 
     <form method="post">
 
+
+        <label for="category">Catégorie</label>
+        <select name="category" id="category">
+            <option value="fort">fort</option>
+            <option value="mid">mid</option>
+            <option value="nul">nul</option>
+        </select>
+
         <label for="title">Titre</label>
         <input type="text" name="title"/>
 
@@ -15,19 +23,21 @@
         <label for="image">Image</label>
         <input type="text" name="image"/>
 
+
         <input type="submit" id="submit"/>
 
     </form>
-<?php if ($isArticleCreated){ ?>
-            <p>Vous avez envoyé des données</p>
-            <p>Résumé de l'article</p>
-            <p>Titre : <?php echo $_POST['title']; ?></p>
-            <p>Contenu : <?php echo $_POST['content']; ?></p>
-            <p>Image : <?php echo $_POST['image']; ?></p>
+    <?php if ($isArticleCreated) { ?>
+        <p>Vous avez envoyé des données</p>
+        <p>Résumé de l'article</p>
+        <p>Catégorie : <?php echo $_POST['category']; ?></p>
+        <p>Titre : <?php echo $_POST['title']; ?></p>
+        <p>Contenu : <?php echo $_POST['content']; ?></p>
+        <p>Image : <?php echo $_POST['image']; ?></p>
 
-        <?php } else { ?>
-            <p>Il y a une erreur dans vos données saisies</p>
-        <?php } ?>
+    <?php } else { ?>
+        <p>Il y a une erreur dans vos données saisies</p>
+    <?php } ?>
 
 </main>
 

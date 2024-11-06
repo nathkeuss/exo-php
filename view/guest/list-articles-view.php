@@ -7,6 +7,7 @@
     <?php foreach ($articles as $article) { ?>
 
         <article>
+            <h1> <?php echo $article['category'] ?></h1>
             <?php if (isStringTooLong($article['title'])) { ?>
                 <h2><?php echo shortenString($article['title']) ?></h2>
             <?php } else { ?>
