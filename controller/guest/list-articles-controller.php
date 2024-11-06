@@ -1,10 +1,8 @@
 <?php
 
-$articleJsonFilePath = '../../model/article.json';
+require_once('../../service/articles-service.php');
 
-$articleJson = file_get_contents($articleJsonFilePath);
-
-$article = json_decode($articleJson, true);
+$articles = findArticles();
 
 function isStringTooLong($stringToCheck) {
     return mb_strlen($stringToCheck, 'UTF-8') > 50;
